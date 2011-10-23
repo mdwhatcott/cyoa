@@ -1,0 +1,5 @@
+Adapted from http://inventwithpython.com/blog/2010/01/14/new-choose-your-own-adventure-game/
+
+-- Python 2.6 and 2.7 compatible
+-- Separated settings from the story methods
+-- Renamed a few story methods
