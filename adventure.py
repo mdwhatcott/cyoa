@@ -1,9 +1,12 @@
 from __future__ import print_function
+import os
+import sys
 from program import rock, dragon_location, skulls, boat
 
 ########### STORY SECTIONS ############
 
 def embark():
+    clear()
     print()
     print('You have ventured to the realm of dragons, and have finally arrived at the Dragon Cave.')
     print('With your trusty sword at your side and trust backpack on your back, you look upon the fearsome entrance to the cave.')
@@ -15,7 +18,7 @@ def embark():
     cave_entrance()
 
 def cave_entrance():
-    print(DIVIDER_LINE)
+    clear()
     print('You are standing in front of the entrance of the cave.')
     if skulls == 'present':
         print('There are a bunch of human skulls and bones lying around.')
@@ -32,7 +35,7 @@ def cave_entrance():
         top_of_cave()
 
 def top_of_cave():
-    print(DIVIDER_LINE)
+    clear()
     print('After climbing up, you are standing on top of the cave.')
     print('There is a small hole that seems to be a chimney nearby.')
     if dragon_location == 'upper':
@@ -48,7 +51,7 @@ def top_of_cave():
         cave_entrance()
 
 def cave_antechamber():
-    print(DIVIDER_LINE)
+    clear()
     print('You are inside front chamber of the cave. You can see the exit of the cave which would take you outside.')
     print('There are two paths that lead deeper into the cave, one that goes up and the other that goes down.')
     print()
@@ -65,7 +68,7 @@ def cave_antechamber():
         lower_chamber()
 
 def go_down_chimney():
-    print(DIVIDER_LINE)
+    clear()
     if dragon_location == 'upper':
         print('You climb down into the smokey chimney. The smoke is really thick!... (press enter)')
         raw_input()
@@ -80,7 +83,7 @@ def go_down_chimney():
         upper_chamber()
 
 def upper_chamber():
-    print(DIVIDER_LINE)
+    clear()
     print('You are standing in a chamber near the top of the cave. There is a rope ladder to a chimney hole in the ceiling that leads outside.')
     if dragon_location == 'upper':
         print('The dragon is standing in the chamber! Smoke comes out of his nostrils and floats up and out the hole in the ceiling.')
@@ -98,9 +101,9 @@ def upper_chamber():
             cave_antechamber()
 
 def lower_chamber():
-    print(DIVIDER_LINE)
+    clear()
     print('----rock: ' + rock)
-    print(DIVIDER_LINE)
+    clear()
     print('You are in the lower chamber of the cave. There is a path leading back to the front of the cave.')
     print('This chamber is very large, and there is an underground lake in the chamber. The water is dark and')
     print('murky. You cannot tell how deep it is or what may be in it. In the middle of the lake, you can barely')
@@ -150,7 +153,7 @@ def lower_chamber():
 
 def take_rock():
     global rock
-    print(DIVIDER_LINE)
+    clear()
     print('You pick up the large rock and put it in your trusty backpack. Ooof! It sure is heavy.')
     print()
     pause()
@@ -159,7 +162,7 @@ def take_rock():
 
 def put_rock_in_boat():
     global rock
-    print(DIVIDER_LINE)
+    clear()
     print('You set the large rock down in the creaky old boat. The boat rocks from side to side, no pun intended.')
     print()
     pause()
@@ -180,7 +183,7 @@ def put_rock_in_boat():
         return
 
 def swim_across_lake():
-    print(DIVIDER_LINE)
+    clear()
     print('You dive into the water. Yipes! It is icy cold!')
     pause()
     if rock == 'holding':
@@ -203,7 +206,7 @@ def swim_across_lake():
         island()
 
 def ride_boat_across_lake():
-    print(DIVIDER_LINE)
+    clear()
     print('You get into the creaky old boat and begin to row towards the island... (press enter)')
     raw_input()
     print('Half way to the island, you notice that the boat has a small leak!... (press enter)')
@@ -226,7 +229,7 @@ def ride_boat_across_lake():
         return
 
 def island():
-    print(DIVIDER_LINE)
+    clear()
     print('You are standing on the island in the middle of the underground lake. The shiny glint comes from a large pile of gold and jewels!')
     print('You see there is a rope ladder from the ceiling above the island.')
     pause()
@@ -244,7 +247,7 @@ def island():
         return
 
 def showdown():
-    print(DIVIDER_LINE)
+    clear()
     print()
     print('The dragon is huge! He stands ten feet tall, and has tough green scales and giant claws.')
     print('His leathery wings are folded back over his massive body, and he smiles at you with giant teeth as whisps of smoke come out of his nostrils.')
@@ -344,4 +347,7 @@ def choose_path(numberOfPaths):
 def pause():
     raw_input('Press enter to continue.')
 
-DIVIDER_LINE = '-' * 60 + '\n'
+def clear():
+    os.system(CLEAR)
+
+CLEAR = 'cls' if sys.platform == 'win32' else 'clear'
