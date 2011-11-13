@@ -10,5 +10,5 @@ boat = 'sinks' if randint(0, 1) else 'floats'
 
 rock = 'present'
 
-if __name__ == '__main__': # if python is ready...
+if __name__ == '__main__':
     adventure.embark()
